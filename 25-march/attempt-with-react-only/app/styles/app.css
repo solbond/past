@@ -1,0 +1,186 @@
+@import "tailwindcss" source("../");
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme {
+  --font-proto: JetBrains Mono, monospace;
+  --font-mono: Space Mono, monospace;
+  --font-press-start: "Press Start 2P";
+  --font-ubuntu: Ubuntu, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility neon-border {
+  @apply border shadow-md border-gray-200;
+  @apply dark:shadow-[0_0_15px_var(--neon-cyan),inset_0_0_10px_var(--neon-cyan)] dark:border-[var(--neon-cyan)];
+}
+
+@utility neon-text {
+  @apply text-gray-900;
+  @apply dark:text-[var(--neon-cyan)];
+}
+
+@utility neon-text-green {
+  @apply text-green-600;
+  @apply dark:text-[var(--neon-green)];
+}
+
+@utility cyber-card {
+  @apply border border-gray-200
+           shadow-md dark:shadow-[0_0_10px_rgba(0,234,171,0.2)]
+           backdrop-blur-sm transition-all duration-300;
+
+  &:hover {
+    @apply border-emerald-700 dark:border-[var(--neon-cyan)];
+    @apply dark:animate-[neonBorderGlow_1s_infinite];
+  }
+}
+
+@utility neon-border-bottom {
+  @apply border-b-[1px] border-gray-200;
+  @apply dark:border-b-[var(--neon-cyan)];
+  @apply dark:shadow-[0_1px_12px_-2px_var(--neon-cyan)];
+}
+
+@layer utilities {
+  :root {
+    --neon-cyan: #006b4e;
+    --neon-green: #067e06;
+    --neon-yellow: #ff9900;
+    --dark-bg: #0d0d0d;
+    --dark-card: rgba(0, 0, 0, 0.8);
+    --background: var(--color-white);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: var(--color-black);
+      --neon-cyan: #00eaab;
+      --neon-green: #00ff00;
+    }
+  }
+}
+
+@layer base {
+  html {
+    @apply font-proto min-h-screen bg-white text-gray-900;
+  }
+  @media (prefers-color-scheme: dark) {
+    html {
+      @apply bg-[var(--dark-bg)] text-[var(--neon-cyan)];
+    }
+  }
+}
+
+.monospace {
+  font-family: "Space Mono", monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.statistics-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+  gap: 2rem;
+}
+
+.stat-box {
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.contact-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.contact-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Add Proto Mono class */
+.font-proto {
+  font-family: "Proto Mono", monospace;
+}
+
+@keyframes cyber-pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: cyber-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-75 {
+  animation-delay: 75ms;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}

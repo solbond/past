@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 240 10% 3.9%;
+
+		--card: 0 0% 100%;
+		--card-foreground: 240 10% 3.9%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 240 10% 3.9%;
+
+		--primary: 240 5.9% 10%;
+		--primary-foreground: 0 0% 98%;
+
+		--secondary: 240 4.8% 95.9%;
+		--secondary-foreground: 240 5.9% 10%;
+
+		--muted: 240 4.8% 95.9%;
+		--muted-foreground: 240 3.8% 46.1%;
+
+		--accent: 240 4.8% 95.9%;
+		--accent-foreground: 240 5.9% 10%;
+
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 240 5.9% 90%;
+		--input: 240 5% 84%;
+		--ring: 240 10% 3.9%;
+
+		--radius: 0.5rem;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--background: 240 10% 3.9%;
+			--foreground: 0 0% 98%;
+
+			--card: 240 10% 3.9%;
+			--card-foreground: 0 0% 98%;
+
+			--popover: 240 10% 3.9%;
+			--popover-foreground: 0 0% 98%;
+
+			--primary: 0 0% 98%;
+			--primary-foreground: 240 5.9% 10%;
+
+			--secondary: 240 3.7% 15.9%;
+			--secondary-foreground: 0 0% 98%;
+
+			--muted: 240 3.7% 15.9%;
+			--muted-foreground: 240 5% 64.9%;
+
+			--accent: 240 3.7% 15.9%;
+			--accent-foreground: 0 0% 98%;
+
+			--destructive: 0 62.8% 30.6%;
+			--destructive-foreground: 0 0% 98%;
+
+			--border: 240 3.7% 15.9%;
+			--input: 240 5% 26%;
+			--ring: 240 4.9% 83.9%;
+		}
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+@layer components {
+	.loader {
+		@apply bg-primary/20 relative inline-block h-2.5 w-full overflow-hidden rounded-full dark:bg-zinc-400;
+	}
+
+	.loader::after {
+		content: "";
+		@apply absolute left-0 top-0 box-border h-2.5 w-48 rounded-full bg-gradient-to-tr from-purple-100 to-indigo-300;
+		animation: animloader 1s linear infinite;
+	}
+
+	@keyframes animloader {
+		0% {
+			left: 0;
+			transform: translateX(-100%);
+		}
+		100% {
+			left: 100%;
+			transform: translateX(0%);
+		}
+	}
+
+	.shadowRolling {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		display: block;
+		margin: 15px auto;
+		position: relative;
+		color: #fff;
+		left: -100px;
+		box-sizing: border-box;
+		animation: shadowRolling 2s linear infinite;
+	}
+
+	@keyframes shadowRolling {
+		0% {
+			box-shadow:
+				0px 0 rgba(255, 255, 255, 0),
+				0px 0 rgba(255, 255, 255, 0),
+				0px 0 rgba(255, 255, 255, 0),
+				0px 0 rgba(255, 255, 255, 0);
+		}
+		12% {
+			box-shadow:
+				100px 0 white,
+				0px 0 rgba(255, 255, 255, 0),
+				0px 0 rgba(255, 255, 255, 0),
+				0px 0 rgba(255, 255, 255, 0);
+		}
+		25% {
+			box-shadow:
+				110px 0 white,
+				100px 0 white,
+				0px 0 rgba(255, 255, 255, 0),
+				0px 0 rgba(255, 255, 255, 0);
+		}
+		36% {
+			box-shadow:
+				120px 0 white,
+				110px 0 white,
+				100px 0 white,
+				0px 0 rgba(255, 255, 255, 0);
+		}
+		50% {
+			box-shadow:
+				130px 0 white,
+				120px 0 white,
+				110px 0 white,
+				100px 0 white;
+		}
+		62% {
+			box-shadow:
+				200px 0 rgba(255, 255, 255, 0),
+				130px 0 white,
+				120px 0 white,
+				110px 0 white;
+		}
+		75% {
+			box-shadow:
+				200px 0 rgba(255, 255, 255, 0),
+				200px 0 rgba(255, 255, 255, 0),
+				130px 0 white,
+				120px 0 white;
+		}
+		87% {
+			box-shadow:
+				200px 0 rgba(255, 255, 255, 0),
+				200px 0 rgba(255, 255, 255, 0),
+				200px 0 rgba(255, 255, 255, 0),
+				130px 0 white;
+		}
+		100% {
+			box-shadow:
+				200px 0 rgba(255, 255, 255, 0),
+				200px 0 rgba(255, 255, 255, 0),
+				200px 0 rgba(255, 255, 255, 0),
+				200px 0 rgba(255, 255, 255, 0);
+		}
+	}
+}
+
+:root {
+	--PrimaryText: rgb(0, 0, 0);
+	--PrimaryBackground: white;
+	--FillerBackground: #e1e1e1;
+	--SecondaryBackground: #f9f9f9;
+	--ButtonColor: rgb(187, 53, 208);
+	--Scrollbar: #ebebeb;
+	--ShadowInput: 0px 2px 2px rgba(67, 66, 66, 0.1);
+	--BorderInput: rgba(168, 165, 165, 0.4);
+	--BorderCard: rgba(210, 210, 210, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--PrimaryText: white;
+		--PrimaryBackground: #121212;
+		--FillerBackground: #242424;
+		--SecondaryBackground: #191919;
+		--Scrollbar: #2e2e2e;
+		--ShadowInput: none;
+		--BorderInput: rgb(255, 255, 255, 0.3);
+		--BorderCard: rgb(255, 252, 252, 0.5);
+	}
+}
+
+@layer utilities {
+	.shadow-input {
+		border-color: 1px solid var(--BorderInput);
+		box-shadow: var(--ShadowInput);
+	}
+
+	.border-div {
+		border: 1px solid var(--BorderCard);
+	}
+
+	.shadow-input:focus {
+		outline: 1px solid var(--BorderInput);
+		box-shadow: var(--ShadowInput);
+	}
+
+	.completeprofile-input {
+		@apply bg-white dark:bg-inherit;
+	}
+
+	.bg-pricecard {
+		@apply bg-gradient-to-b from-[#eff9ef] to-white dark:from-[#e8bfd3] dark:to-[#484d6b];
+	}
+
+	.bg-paymethod {
+		@apply bg-gradient-to-b from-[#ffffff] to-[#ffffff] dark:from-[#e3e4e6] dark:to-[#b1b1b1];
+	}
+
+	.tiptap p.is-editor-empty:first-child::before {
+		color: #adb5bd;
+		content: attr(data-placeholder);
+		float: left;
+		height: 0;
+		pointer-events: none;
+	}
+	html,
+	body {
+		background: var(--PrimaryBackground);
+		color: var(--PrimaryText);
+
+		/* *::-webkit-scrollbar {
+			width: 8px;
+			height: 8px;
+		}
+
+		div::-webkit-scrollbar-track {
+			border-radius: 10px;
+			background-color: transparent;
+		}
+
+		div::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+			background-color: var(--Scrollbar);
+		} */
+	}
+
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	code {
+		background-color: purple;
+		border-radius: 0.4rem;
+		color: black;
+		font-size: 0.85rem;
+		padding: 0.25em 0.3em;
+	}
+
+	pre {
+		background: black;
+		border-radius: 0.5rem;
+		color: white;
+		font-family: "JetBrainsMono", monospace;
+		margin: 1.5rem 0;
+		padding: 0.75rem 1rem;
+
+		code {
+			background: none;
+			color: inherit;
+			font-size: 0.8rem;
+			padding: 0;
+		}
+	}
+
+	h4 {
+		font-size: 1.5rem;
+	}
+	/* Remove arrows in input[type=number] for Firefox */
+	input[type="number"] {
+		-moz-appearance: textfield;
+	}
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	height: 1em;
+	width: 1em;
+	border-radius: 50em;
+	background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+	background-size: contain;
+	opacity: 0;
+	pointer-events: none;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+	opacity: 0.3;
+	pointer-events: all;
+}
+
+input[type="search"]::-webkit-search-cancel-button:hover {
+	opacity: 0.5;
+}
+
+input[type="search"]::-moz-search-cancel-button {
+	-moz-appearance: none;
+	height: 1em;
+	width: 1em;
+	border-radius: 50em;
+	background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+	background-size: contain;
+	opacity: 0;
+}
+
+input[type="search"]:focus::-moz-search-cancel-button {
+	opacity: 0.3;
+}
+
+input[type="search"]::-moz-search-cancel-button:hover {
+	opacity: 0.5;
+}

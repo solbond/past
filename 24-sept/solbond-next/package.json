@@ -1,0 +1,39 @@
+{
+  "name": "solbond",
+  "scripts": {
+    "dev": "bun web",
+    "web": "cd web && bun dev",
+    "web:build": "bun run --filter '*' build",
+    "api": "cd api && bun dev",
+    "api:stripe-webhook-listen": "stripe listen --forward-to localhost:8787/webhooks/stripe/payment-success",
+    "format": "prettier --write .",
+    "cli": "cd api && bun run --watch run.ts"
+  },
+  "devDependencies": {
+    "@ronin/solbond": "^0.0.0-3465955685963",
+    "bun-types": "^1.1.20"
+  },
+  "workspaces": [
+    "web",
+    "api"
+  ],
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ],
+    "tailwindFunctions": [
+      "cn",
+      "cva"
+    ],
+    "useTabs": true,
+    "semi": false,
+    "trailingComma": "none",
+    "printWidth": 120,
+    "arrowParens": "avoid"
+  },
+  "private": true,
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "tiny-encryptor": "^1.0.0"
+  }
+}
